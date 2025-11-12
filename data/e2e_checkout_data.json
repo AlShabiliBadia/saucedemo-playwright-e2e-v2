@@ -1,0 +1,16 @@
+{
+  "test_id": "e2e_full_checkout_flow",
+  "markers": ["e2e", "smoke", "checkout"],
+  "operations": [
+    {"name": "login", "username": "standard_user", "password": "secret_sauce"},
+    {"name": "add_item_to_cart", "item_name": "Sauce Labs Backpack"},
+    {"name": "go_to_cart"},
+    {"name": "assert_item_in_cart", "item_name": "Sauce Labs Backpack"},
+    {"name": "go_to_checkout_step_one"},
+    {"name": "fill_checkout_info", "first_name": "Test", "last_name": "User", "postal_code": "12345"},
+    {"name": "go_to_checkout_step_two"},
+    {"name": "assert_item_in_overview", "item_name": "Sauce Labs Backpack"},
+    {"name": "finish_checkout"},
+    {"name": "assert_order_complete", "expected_message": "Thank you for your order!"}
+  ]
+}

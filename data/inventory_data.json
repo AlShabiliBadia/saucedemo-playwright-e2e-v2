@@ -1,0 +1,56 @@
+{
+  "pipelines": [
+    {
+      "test_id": "sort_name_az",
+      "markers": ["inventory", "sort", "smoke"],
+      "operations": [
+        {"name": "login", "username": "standard_user", "password": "secret_sauce"},
+        {"name": "sort_products", "sort_order": "az"},
+        {"name": "assert_product_names", "expected_names": [
+          "Sauce Labs Backpack", "Sauce Labs Bike Light", "Sauce Labs Bolt T-Shirt",
+          "Sauce Labs Fleece Jacket", "Sauce Labs Onesie", "Test.allTheThings() T-Shirt (Red)"
+        ]}
+      ]
+    },
+    {
+      "test_id": "sort_name_za",
+      "markers": ["inventory", "sort"],
+      "operations": [
+        {"name": "login", "username": "standard_user", "password": "secret_sauce"},
+        {"name": "sort_products", "sort_order": "za"},
+        {"name": "assert_product_names", "expected_names": [
+          "Test.allTheThings() T-Shirt (Red)", "Sauce Labs Onesie", "Sauce Labs Fleece Jacket",
+          "Sauce Labs Bolt T-Shirt", "Sauce Labs Bike Light", "Sauce Labs Backpack"
+        ]}
+      ]
+    },
+    {
+      "test_id": "sort_price_lohi",
+      "markers": ["inventory", "sort"],
+      "operations": [
+        {"name": "login", "username": "standard_user", "password": "secret_sauce"},
+        {"name": "sort_products", "sort_order": "lohi"},
+        {"name": "assert_product_prices", "expected_prices": [7.99, 9.99, 15.99, 15.99, 29.99, 49.99]}
+      ]
+    },
+    {
+      "test_id": "sort_price_hilo",
+      "markers": ["inventory", "sort"],
+      "operations": [
+        {"name": "login", "username": "standard_user", "password": "secret_sauce"},
+        {"name": "sort_products", "sort_order": "hilo"},
+        {"name": "assert_product_prices", "expected_prices": [49.99, 29.99, 15.99, 15.99, 9.99, 7.99]}
+      ]
+    },
+    {
+      "test_id": "add_single_item_to_cart",
+      "markers": ["inventory", "cart", "smoke"],
+      "operations": [
+        {"name": "login", "username": "standard_user", "password": "secret_sauce"},
+        {"name": "add_item_to_cart", "item_name": "Sauce Labs Backpack"},
+        {"name": "assert_cart_badge_count", "count": 1},
+        {"name": "assert_remove_button_visible", "item_name": "Sauce Labs Backpack"}
+      ]
+    }
+  ]
+}

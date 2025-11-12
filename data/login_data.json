@@ -1,0 +1,84 @@
+{
+  "pipelines": [
+    {
+      "test_id": "valid_standard",
+      "markers": ["smoke", "login"],
+      "operations": [
+        {"name": "login", "username": "standard_user", "password": "secret_sauce"},
+        {"name": "assert_login_success"}
+      ]
+    },
+    {
+      "test_id": "valid_problem",
+      "markers": ["login"],
+      "operations": [
+        {"name": "login", "username": "problem_user", "password": "secret_sauce"},
+        {"name": "assert_login_success"}
+      ]
+    },
+    {
+      "test_id": "valid_performance_glitch",
+      "markers": ["login"],
+      "operations": [
+        {"name": "login", "username": "performance_glitch_user", "password": "secret_sauce"},
+        {"name": "assert_login_success"}
+      ]
+    },
+    {
+      "test_id": "valid_error",
+      "markers": ["login"],
+      "operations": [
+        {"name": "login", "username": "error_user", "password": "secret_sauce"},
+        {"name": "assert_login_success"}
+      ]
+    },
+    {
+      "test_id": "valid_visual",
+      "markers": ["login"],
+      "operations": [
+        {"name": "login", "username": "visual_user", "password": "secret_sauce"},
+        {"name": "assert_login_success"}
+      ]
+    },
+    {
+      "test_id": "invalid_locked_out",
+      "markers": ["login", "negative"],
+      "operations": [
+        {"name": "login", "username": "locked_out_user", "password": "secret_sauce"},
+        {"name": "assert_login_failure", "expected_error": "Epic sadface: Sorry, this user has been locked out."}
+      ]
+    },
+    {
+      "test_id": "invalid_password",
+      "markers": ["login", "negative"],
+      "operations": [
+        {"name": "login", "username": "standard_user", "password": "wrong_password"},
+        {"name": "assert_login_failure", "expected_error": "Epic sadface: Username and password do not match any user in this service"}
+      ]
+    },
+    {
+      "test_id": "invalid_username",
+      "markers": ["login", "negative"],
+      "operations": [
+        {"name": "login", "username": "wrong_user", "password": "secret_sauce"},
+        {"name": "assert_login_failure", "expected_error": "Epic sadface: Username and password do not match any user in this service"}
+      ]
+    },
+    {
+      "test_id": "invalid_blank_username",
+      "markers": ["login", "negative"],
+      "operations": [
+        {"name": "login", "username": "", "password": "secret_sauce"},
+        {"name": "assert_login_failure", "expected_error": "Epic sadface: Username is required"}
+      ]
+    },
+    {
+      "test_id": "invalid_blank_password",
+      "markers": ["login", "negative"],
+      "operations": [
+        {"name": "login", "username": "standard_user", "password": ""},
+        {"name": "assert_login_failure", "expected_error": "Epic sadface: Password is required"}
+      ]
+    }
+  ]
+}
