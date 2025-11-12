@@ -1,5 +1,4 @@
 pydantic==2.12.4
 typing_extensions==4.15.0
-playwright==1.56.0
-pytest==8.4.2
+pytest-playwright
 allure-pytest
