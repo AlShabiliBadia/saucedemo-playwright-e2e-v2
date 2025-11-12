@@ -33,7 +33,7 @@ jobs:
         run: playwright install --with-deps
 
       - name: Run Playwright tests
-        run: python -m pytest --alluredir=allure-results --clean-alluredir
+        run: pytest --alluredir=allure-results --clean-alluredir
 
       - name: Upload Playwright Trace/Screenshots on Failure
         if: failure()
